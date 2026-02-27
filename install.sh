@@ -89,11 +89,22 @@ install_scripts() {
     fi
     chmod +x "$fix_script"
 
+    # 下载终端启动器
+    local terminal_script="$INSTALL_DIR/openclaw-terminal"
+    log_info "下载 openclaw-terminal.sh (可视化终端)..."
+    if command -v curl &> /dev/null; then
+        curl -fsSL "$REPO_URL/openclaw-terminal.sh" -o "$terminal_script"
+    elif command -v wget &> /dev/null; then
+        wget -q "$REPO_URL/openclaw-terminal.sh" -O "$terminal_script"
+    fi
+    chmod +x "$terminal_script"
+
     log_info "安装完成 ✓"
     echo ""
     log_info "已安装:"
-    echo "  • $main_script"
-    echo "  • $fix_script"
+    echo "  • $main_script (主脚本)"
+    echo "  • $fix_script (SmartFix)"
+    echo "  • $terminal_script (可视化终端)"
 }
 
 # 检查 PATH

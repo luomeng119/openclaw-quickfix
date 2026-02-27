@@ -210,13 +210,28 @@ NO_COLOR=1 openclaw-quickfix
                 └───────────────┬───────────────────┘
                                 │
                                 ▼
+                    ┌───────────────────────────────┐
+                    │ 4. 启动可视化终端（可选）      │
+                    │    macOS → iTerm2 / tmux     │
+                    │    Linux → tmux              │
+                    │    Windows → tmux            │
+                    │                               │
+                    │   ┌─────────┬───────────────┐ │
+                    │   │ Claude  │ 日志          │ │
+                    │   │ Code    │               │ │
+                    │   │         ├───────────────┤ │
+                    │   │         │ 状态          │ │
+                    │   └─────────┴───────────────┘ │
+                    └───────────────┬───────────────┘
+                                    │
+                                    ▼
                 ┌─────────────────────────────────┐
-                │ 4. 验证 JSON 语法               │
+                │ 5. 验证 JSON 语法               │
                 └───────────────┬─────────────────┘
                                 │
                                 ▼
                 ┌─────────────────────────────────┐
-                │ 5. 重启 Gateway                 │
+                │ 6. 重启 Gateway                 │
                 │    macOS  → launchctl           │
                 │    Linux  → systemctl           │
                 │    Windows→ net / CLI           │
@@ -234,13 +249,28 @@ NO_COLOR=1 openclaw-quickfix
 
 SmartFix 是 QuickFix 的**第三层保护**，当遇到无法自动修复的未知错误时，会调用 **Claude Code CLI** 进行 AI 智能修复。
 
-#### SmartFix 能做什么？
+#### 可视化终端支持
 
-- 🔍 **联网搜索** - 搜索相关错误的解决方案
-- 📖 **阅读文档** - 自动查阅 OpenClaw 官方文档
-- 🧠 **智能分析** - AI 分析错误根本原因
-- 🔧 **自动修复** - 生成并执行修复代码
-- ✅ **验证结果** - 确保修复后服务正常
+SmartFix 支持在可视化终端中显示修复过程：
+
+| 平台 | 终端工具 | 分屏效果 |
+|------|----------|----------|
+| **macOS** | iTerm2 (优先) / tmux | 三窗格：修复/日志/状态 |
+| **Linux** | tmux | 三窗格：修复/日志/状态 |
+| **Windows** | tmux (Git Bash/WSL) | 三窗格：修复/日志/状态 |
+
+```
+┌──────────────────────┬──────────────────────────────────┐
+│                      │                                  │
+│  🤖 Claude Code      │  📋 实时日志                     │
+│  修复输出            │  tail -f gateway.log             │
+│                      │                                  │
+│                      ├──────────────────────────────────┤
+│                      │                                  │
+│                      │  📊 修复状态                     │
+│                      │                                  │
+└──────────────────────┴──────────────────────────────────┘
+```
 
 #### 如何启用 SmartFix？
 
@@ -261,7 +291,21 @@ claude login
 # 无需额外配置！
 ```
 
-详细配置请参考 [docs/SMARTFIX.md](docs/SMARTFIX.md)
+#### SmartFix 环境变量
+
+| 变量 | 说明 | 默认值 |
+|------|------|--------|
+| `OPENCLAW_FIX_VISUAL` | 启用可视化终端 | `true` |
+| `OPENCLAW_FIX_MAX_RETRIES` | 最大重试次数 | `2` |
+| `OPENCLAW_FIX_CLAUDE_TIMEOUT_SECS` | 超时时间（秒） | `600` |
+
+```bash
+# 禁用可视化终端
+export OPENCLAW_FIX_VISUAL=false
+
+# 增加重试次数
+export OPENCLAW_FIX_MAX_RETRIES=3
+```
 
 ---
 
@@ -271,18 +315,23 @@ claude login
 openclaw-quickfix/
 ├── openclaw-quickfix.sh      # 主脚本 - 配置错误检测与修复
 ├── openclaw-fix.sh           # SmartFix 脚本 - Claude Code 智能修复
+├── openclaw-terminal.sh      # 终端启动器 - 可视化终端支持
 ├── install.sh                # 一键安装脚本
 ├── README.md                 # 项目文档（本文件）
 ├── LICENSE                   # MIT 许可证
 ├── .gitignore                # Git 忽略规则
-├── docs/
-│   ├── CONTRIBUTING.md       # 贡献指南
-│   ├── ARCHITECTURE.md       # 架构设计说明
-│   └── SMARTFIX.md           # SmartFix 详细配置指南
-└── examples/
-    ├── basic-usage.md        # 基础使用示例
-    └── smartfix-setup.md     # SmartFix 完整配置示例
+└── docs/
+    └── CONTRIBUTING.md       # 贡献指南
 ```
+
+### 📜 脚本清单与执行顺序
+
+| 顺序 | 脚本 | 作用 | 触发方式 |
+|:----:|------|------|----------|
+| 1 | `openclaw-quickfix.sh` | 主脚本：检测配置错误 → 查阅文档 → 执行修复 | 手动运行 / 定时任务 |
+| 2 | `openclaw-fix.sh` | SmartFix：调用 Claude Code 进行 AI 智能修复 | 由 quickfix 自动调用 |
+| 3 | `openclaw-terminal.sh` | 终端启动器：提供可视化终端界面 | 由 fix 脚本自动调用 |
+| 0 | `install.sh` | 安装脚本：一键安装所有组件 | 用户手动执行 |
 
 ---
 
