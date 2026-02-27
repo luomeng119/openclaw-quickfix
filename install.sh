@@ -61,7 +61,7 @@ check_openclaw() {
 
 # 安装脚本
 install_scripts() {
-    log_step "安装 QuickFix 脚本..."
+    log_step "安装 QuickFix v1.1.0..."
 
     # 创建目录
     mkdir -p "$INSTALL_DIR"
@@ -154,7 +154,7 @@ main() {
     echo ""
     echo "=========================================="
     echo "  OpenClaw QuickFix 安装程序"
-    echo "  版本: 1.0.0"
+    echo "  版本: 1.1.0"
     echo "=========================================="
     echo ""
 

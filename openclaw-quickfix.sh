@@ -22,7 +22,7 @@ set -euo pipefail
 # ============================================
 # 版本信息
 # ============================================
-readonly VERSION="1.0.0"
+readonly VERSION="1.1.0"
 readonly SCRIPT_NAME="openclaw-quickfix"
 
 # ============================================
@@ -506,6 +506,9 @@ call_smartfix() {
     # 检测 SmartFix 脚本路径
     local smartfix_script=""
     local script_paths=(
+        "$CONFIG_DIR/scripts/openclaw-fix"
+        "$HOME/.openclaw/scripts/openclaw-fix"
+        "$HOME/.local/bin/openclaw-fix"
         "$CONFIG_DIR/scripts/openclaw-fix.sh"
         "$HOME/.openclaw/scripts/openclaw-fix.sh"
         "$HOME/.local/bin/openclaw-fix.sh"
