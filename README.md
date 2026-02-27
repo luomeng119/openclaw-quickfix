@@ -415,9 +415,22 @@ openclaw-quickfix/
 
 ---
 
+### 👥 作者
+
+**AI共学社 (AI Gongxueshe)**
+
+专注 AI 技术分享与实践的开源社区
+
+- GitHub: [https://github.com/ai-gongxueshe](https://github.com/ai-gongxueshe)
+- 项目仓库: [https://github.com/ai-gongxueshe/openclaw-quickfix](https://github.com/ai-gongxueshe/openclaw-quickfix)
+
+---
+
 <div align="center">
 
-Made with ❤️ by OpenClaw Community
+Made with ❤️ by [AI共学社](https://github.com/ai-gongxueshe)
+
+> **AI共学社** - 专注 AI 技术分享与实践的开源社区
 
 **[⬆ 返回顶部](#openclaw-quickfix)**
 

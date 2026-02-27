@@ -13,9 +13,9 @@
 # 支持: macOS, Linux, Windows (Git Bash / WSL)
 # 依赖: bash 4.0+, python3, grep
 #
-# 作者: OpenClaw Community
+# 作者: AI共学社 (AI Gongxueshe)
 # 许可: MIT License
-# 仓库: https://github.com/openclaw-community/openclaw-quickfix
+# 仓库: https://github.com/ai-gongxueshe/openclaw-quickfix
 
 set -euo pipefail
 

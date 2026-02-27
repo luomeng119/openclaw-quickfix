@@ -132,7 +132,9 @@ show_usage() {
     echo "  https://docs.anthropic.com/claude-code"
     echo ""
     echo "📚 文档:"
-    echo "  https://github.com/luomeng119/openclaw-quickfix"
+    echo "  https://github.com/ai-gongxueshe/openclaw-quickfix"
+    echo ""
+    echo "🏢 作者: AI共学社"
     echo ""
 }
 

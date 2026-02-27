@@ -5,8 +5,9 @@
 # 用法: openclaw-fix.sh [错误信息]
 #       通常由 openclaw-quickfix.sh 自动调用，无需手动执行
 #
-# 作者: OpenClaw Community
+# 作者: AI共学社 (AI Gongxueshe)
 # 许可: MIT License
+# 仓库: https://github.com/ai-gongxueshe/openclaw-quickfix
 
 set -euo pipefail
 
