@@ -1,0 +1,30 @@
+【GitHub About部分推荐填写】
+
+Repository name: openclaw-quickfix
+Description: OpenClaw智能辅助保护系统 - 配置错误自动修复、AI智能诊断、服务自愈
+
+Topics (推荐添加5个):
+- openclaw
+- devops
+- shell
+- ai-assistant
+- automation
+
+Website: (可选，如有文档站点可填写)
+
+Include in the home page:
+☑️ Releases (建议发布v1.1.1 Release)
+☑️ Packages (如有)
+☑️ Environments (如有部署环境)
+
+【README顶部的Badges建议】
+已添加：
+- License: MIT
+- Platform: macOS | Linux | Windows
+- CI: GitHub Actions
+- Version: v1.1.1
+
+【Repository设置建议】
+1. Settings -> General -> Social Preview: 上传项目封面图
+2. Settings -> Manage access: 添加协作者
+3. Settings -> Security -> Security advisories: 启用安全建议
