@@ -403,4 +403,19 @@ bash run_tests.sh
 
 **"确定性软件工程，让 AI 服务永不宕机。"**
 
-**Made with ❤️ by AI共学社**
+**Made with ❤️ by 档案AI共学社**
+
+---
+
+## 🙏 致谢
+
+本项目灵感来源于 [win4r/openclaw-min-bundle](https://github.com/win4r/openclaw-min-bundle)，感谢原作者的出色工作和对OpenClaw生态的贡献。
+
+特别感谢：
+- **win4r** - 原项目作者，提供了核心思路和技术基础
+- **OpenClaw社区** - 提供了丰富的文档和最佳实践
+- **Claude Code团队** - 提供了强大的AI辅助开发工具
+
+---
+
+**Made with ❤️ by 档案AI共学社**
