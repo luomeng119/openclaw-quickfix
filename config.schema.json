@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://openclaw.ai/schemas/config.json",
+  "title": "OpenClaw Configuration",
+  "description": "OpenClaw Gateway configuration schema",
+  "type": "object",
+  "required": [],
+  "properties": {
+    "agents": {
+      "type": "object",
+      "description": "Agent configuration",
+      "properties": {
+        "list": {
+          "type": "array",
+          "description": "List of configured agents",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Unique agent identifier"
+              },
+              "name": {
+                "type": "string",
+                "description": "Agent display name"
+              },
+              "enabled": {
+                "type": "boolean",
+                "description": "Whether the agent is enabled"
+              }
+            },
+            "required": ["id"],
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "gateway": {
+      "type": "object",
+      "description": "Gateway service configuration",
+      "properties": {
+        "port": {
+          "type": "integer",
+          "minimum": 1024,
+          "maximum": 65535,
+          "description": "Gateway service port"
+        },
+        "host": {
+          "type": "string",
+          "format": "hostname",
+          "description": "Gateway service host"
+        }
+      }
+    },
+    "auth": {
+      "type": "object",
+      "description": "Authentication configuration",
+      "properties": {
+        "profiles": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["token", "oauth", "apikey"]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

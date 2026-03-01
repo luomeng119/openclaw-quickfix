@@ -111,6 +111,15 @@ launch_visual_tmux() {
 # ============================================
 
 main() {
+    # 检查 claude 命令是否存在
+    if ! command -v claude &> /dev/null; then
+        log_error "错误: 未找到 'claude' 命令"
+        log_info "请先安装 Claude Code CLI: https://github.com/anthropics/claude-code"
+        log_info "或使用以下命令安装:"
+        log_info "  npm install -g @anthropic-ai/claude-code"
+        exit 1
+    fi
+    
     local error_info="${1:-unknown_error}"
     local claude_cmd="claude -p \"你正在修复 OpenClaw Gateway 服务。错误: $error_info。请分析日志并修复配置。\" --allowedTools 'Read,Write,Edit,Bash'"
 

@@ -1,0 +1,10 @@
+{
+  "agents": {
+    "list": [
+      {
+        "id": "ceo",
+        "heartbeat": "invalid_field_here"
+      }
+    ]
+  }
+}

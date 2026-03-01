@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# 简体中文语言包
+
+readonly L_VERSION="版本"
+readonly L_INFO="信息"
+readonly L_WARN="警告"
+readonly L_ERROR="错误"
+readonly L_FIX="修复"
+readonly L_DOC="文档"
+readonly L_PASS="通过"
+readonly L_FAIL="失败"
+
+readonly L_DETECTING_OS="正在检测操作系统..."
+readonly L_OS_DETECTED="检测到操作系统"
+readonly L_CHECKING_SYNTAX="正在检查语法..."
+readonly L_SYNTAX_OK="语法正确"
+readonly L_SYNTAX_ERROR="语法错误"
+readonly L_CHECKING_CONFIG="正在检查配置..."
+readonly L_CONFIG_OK="配置正常"
+readonly L_CONFIG_ERROR="配置错误"
+readonly L_BACKUP_CREATED="备份已创建"
+readonly L_RESTORE_BACKUP="正在恢复备份..."
+readonly L_FIX_COMPLETE="修复完成"
+readonly L_RESTARTING="正在重启服务..."
+readonly L_RESTART_SUCCESS="重启成功"
+readonly L_RESTART_FAILED="重启失败"
+
+readonly L_USAGE="用法"
+readonly L_OPTIONS="选项"
+readonly L_EXAMPLES="示例"

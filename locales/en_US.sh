@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# English Language Pack
+
+readonly L_VERSION="Version"
+readonly L_INFO="Info"
+readonly L_WARN="Warning"
+readonly L_ERROR="Error"
+readonly L_FIX="Fix"
+readonly L_DOC="Doc"
+readonly L_PASS="Pass"
+readonly L_FAIL="Fail"
+
+readonly L_DETECTING_OS="Detecting operating system..."
+readonly L_OS_DETECTED="Detected OS"
+readonly L_CHECKING_SYNTAX="Checking syntax..."
+readonly L_SYNTAX_OK="Syntax OK"
+readonly L_SYNTAX_ERROR="Syntax error"
+readonly L_CHECKING_CONFIG="Checking configuration..."
+readonly L_CONFIG_OK="Config OK"
+readonly L_CONFIG_ERROR="Config error"
+readonly L_BACKUP_CREATED="Backup created"
+readonly L_RESTORE_BACKUP="Restoring backup..."
+readonly L_FIX_COMPLETE="Fix complete"
+readonly L_RESTARTING="Restarting service..."
+readonly L_RESTART_SUCCESS="Restart successful"
+readonly L_RESTART_FAILED="Restart failed"
+
+readonly L_USAGE="Usage"
+readonly L_OPTIONS="Options"
+readonly L_EXAMPLES="Examples"

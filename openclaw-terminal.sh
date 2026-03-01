@@ -73,7 +73,7 @@ tell application "$iterm_name"
     activate
     set newWin to (create window with default profile)
     tell current session of newWin
-        set name to "�� Main Task"
+        set name to "[Main] Task"
         write text "$cmd1"
         
         split vertically with default profile

@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install shellcheck
+      run: sudo apt-get install -y shellcheck
+    
+    - name: ShellCheck Analysis
+      run: |
+        echo "::group::ShellCheck Analysis"
+        shellcheck --severity=warning --format=tty \
+          openclaw-quickfix.sh \
+          openclaw-fix.sh \
+          openclaw-terminal.sh \
+          install.sh \
+          uninstall.sh \
+          tests/run_tests.sh || true
+        echo "::endgroup::"
+    
+    - name: Syntax Check
+      run: |
+        echo "::group::Syntax Check"
+        bash -n openclaw-quickfix.sh
+        bash -n openclaw-fix.sh
+        bash -n openclaw-terminal.sh
+        bash -n install.sh
+        bash -n uninstall.sh
+        bash -n tests/run_tests.sh
+        echo "✅ All scripts syntax OK"
+        echo "::endgroup::"
+    
+    - name: Run Tests
+      run: |
+        echo "::group::Running Tests"
+        cd tests && bash run_tests.sh
+        echo "::endgroup::"
+    
+    - name: Check File Permissions
+      run: |
+        echo "::group::File Permissions"
+        for script in *.sh; do
+          if [[ -x "$script" ]]; then
+            echo "✅ $script is executable"
+          else
+            echo "⚠️  $script is not executable"
+          fi
+        done
+        echo "::endgroup::"
+
+  shellcheck:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install shellcheck
+      run: sudo apt-get install -y shellcheck
+    
+    - name: Strict ShellCheck
+      run: |
+        shellcheck --severity=info \
+          openclaw-quickfix.sh \
+          openclaw-fix.sh \
+          openclaw-terminal.sh \
+          install.sh \
+          uninstall.sh 2>&1 | head -50 || true
